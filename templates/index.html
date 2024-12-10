@@ -120,8 +120,13 @@
             // fetch('test_time')
                 .then(response => response.json())
                 .then(time => {
-                    let remainingHours = time.hour;
-                    let remainingMinutes = time.minute;
+                    // Convert UTC to local time
+                    const date = new Date();
+                    const localHour = date.getHours();
+                    const localMinute = date.getMinutes();
+
+                    let remainingHours = localHour;
+                    let remainingMinutes = localMinute;
                     
                     // Hour rings
                     const show12h = remainingHours >= 12;
